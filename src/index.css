@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/*file upload css*/
+
+.dropzone {
+  width: 920px;
+  height: 180px;
+
+}
+
+.dropzone Dropzone {
+  width:920px;
+  height:180px;
+}
