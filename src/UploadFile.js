@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone'
+import { Document } from 'react-pdf'
 
 const borderStyle = {
   borderWidth: '2px',
@@ -59,13 +60,26 @@ class UploadFile extends React.Component {
           <div className="col-9" style={borderStyle}>
             <div className="row" style={{margin:'5px 5px'}}>
             {
-
-            this.props.files_array.map((f, index) =>
-              <div style={fileCardStyle} key={index}>
-                <i className="fa fa-times-circle btn" style={deletionCrossStyle}
-                   onClick={() => this.props.deleteFile(index)}/>
-                <img src={f.preview} style={imgStyle}/>
+            this.props.files_array.map((f, index) => (
+              <div key={index}>
+                {f.type === 'image/jpeg' &&
+                 <div style={fileCardStyle} >
+                  <i className="fa fa-times-circle btn" style={deletionCrossStyle}
+                     onClick={() => this.props.deleteFile(index)}/>
+                  <img src={f.preview} style={imgStyle}/>
+                </div>
+                }{
+                 f.type === 'application/pdf' &&
+                 <div style={fileCardStyle}>
+                   <i className="fa fa-times-circle btn" style={deletionCrossStyle}
+                      onClick={() => this.props.deleteFile(index)}/>
+                   {console.log(f)}
+                   <embed src={f.preview} style={imgStyle}/>
+                 </div>
+              }
               </div>
+                )
+
             )
             }</div>
           </div>
